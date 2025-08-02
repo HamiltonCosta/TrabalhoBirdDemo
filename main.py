@@ -12,13 +12,14 @@ screen_height = 800
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Bird - Demo')
 
-#Fonte
+# Fontes
 font = pygame.font.SysFont('Bauhaus 93', 60)
+footer_font = pygame.font.SysFont('Arial', 20)
 
-#Cores
+# Cores
 white = (255, 255, 255)
 
-#Variáveis do jogo
+# Variáveis do jogo
 ground_scroll = 0
 scroll_speed = 4
 flying = False
@@ -30,18 +31,18 @@ last_pipe = pygame.time.get_ticks() - pipe_frequency
 score = 0
 pass_pipe = False
 
-#Imagens
+# Imagens
 bg = pygame.image.load('assets/img/bg.png')
 ground_img = pygame.image.load('assets/img/ground.png')
 button_img = pygame.image.load('assets/img/restart.png')
 message_img = pygame.image.load('assets/img/message.png')
 
-#Sons
+# Sons
 point_sound = pygame.mixer.Sound('assets/sons/point.wav')
 hit_sound  = pygame.mixer.Sound('assets/sons/hit.wav')
 wing_sound = pygame.mixer.Sound('assets/sons/wing.wav')
 
-#Funções
+# Funções
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
@@ -52,7 +53,7 @@ def reset_game():
     flappy.rect.y = int(screen_height / 2)
     return 0
 
-#Classes
+# Classes
 class Bird(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
@@ -120,24 +121,23 @@ class Button():
         screen.blit(self.image, (self.rect.x, self.rect.y))
         return action
 
-#Grupos
+# Grupos
 bird_group = pygame.sprite.Group()
 pipe_group = pygame.sprite.Group()
 flappy = Bird(100, int(screen_height / 2))
 bird_group.add(flappy)
 
-# Posição do botão reiniciar
+# Botão de restart
 button_x = screen_width // 2 - 50
 button_y = screen_height - 150
-
 restart_button = Button(button_x, button_y, button_img)
 
-#Loop principal
+# Loop principal
 run = True
 while run:
     clock.tick(fps)
 
-    #Menu demo
+    # Menu
     if menu:
         screen.blit(bg, (0, 0))
         text_surface = font.render('FlyBird', True, white)
@@ -147,26 +147,30 @@ while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-            # Iniciar jogo ao clicar no mouse na tela do menu
             if event.type == pygame.MOUSEBUTTONDOWN:
                 menu = False
                 flying = False
                 game_over = False
                 score = reset_game()
 
+        # Direitos autorais no menu
+        footer_text = 'Hamilton Costa Gonçalves Junior RU:4742586'
+        footer_surface = footer_font.render(footer_text, True, white)
+        screen.blit(footer_surface, ((screen_width - footer_surface.get_width()) // 2, screen_height - 30))
+
         pygame.display.update()
         continue
 
-    #Fundo
+    # Fundo
     screen.blit(bg, (0, 0))
 
-    #Desenhar sprites
+    # Sprites
     bird_group.draw(screen)
     bird_group.update()
     pipe_group.draw(screen)
     screen.blit(ground_img, (ground_scroll, 768))
 
-    #Pontuação
+    # Pontuação
     if len(pipe_group) > 0:
         if bird_group.sprites()[0].rect.left > pipe_group.sprites()[0].rect.left\
            and bird_group.sprites()[0].rect.right < pipe_group.sprites()[0].rect.right\
@@ -180,7 +184,7 @@ while run:
 
     draw_text(str(score), font, white, int(screen_width / 2), 20)
 
-    #Colisão
+    # Colisões
     if pygame.sprite.groupcollide(bird_group, pipe_group, False, False) or flappy.rect.top < 0:
         if not game_over:
             hit_sound.play()
@@ -192,7 +196,7 @@ while run:
         game_over = True
         flying = False
 
-    #Gerar canos
+    # Geração de canos
     if not game_over and flying:
         time_now = pygame.time.get_ticks()
         if time_now - last_pipe > pipe_frequency:
@@ -209,18 +213,23 @@ while run:
 
         pipe_group.update()
 
-    #Botão de restart
+    # Botão restart
     if game_over:
         if restart_button.draw():
             game_over = False
             score = reset_game()
 
-    #Eventos
+    # Eventos
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
         if event.type == pygame.MOUSEBUTTONDOWN and not flying and not game_over:
             flying = True
+
+    # Direitos autorais (rodapé)
+    footer_text = 'Hamilton Costa Gonçalves Junior RU:4742586'
+    footer_surface = footer_font.render(footer_text, True, white)
+    screen.blit(footer_surface, ((screen_width - footer_surface.get_width()) // 2, screen_height - 30))
 
     pygame.display.update()
 
