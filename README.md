@@ -27,3 +27,119 @@ Pygame	- Desenvolvimento da interface, sprites, eventos, sons, colisões e contr
 Git	- Controle de versão do projeto
 GitHub	- Hospedagem e gerenciamento do repositório
 StarUML	- Modelagem e representação do projeto
+
+📚 Conceitos Aplicados
+
+Durante o desenvolvimento do projeto foram aplicados conhecimentos relacionados a:
+
+Programação em Python;
+Programação orientada a objetos;
+Criação e utilização de classes;
+Utilização de bibliotecas externas;
+Manipulação de imagens e sons;
+Eventos e interação com o usuário;
+Sprites e grupos de sprites;
+Detecção de colisões;
+Geração de valores aleatórios;
+Controle de tempo;
+Controle de FPS;
+Estruturação de um loop principal de jogo;
+Controle de versão com Git;
+Modelagem de software utilizando StarUML.
+🎯 Principais Recursos do Pygame Utilizados
+pygame.time.Clock()
+
+Foi utilizado para controlar a velocidade de atualização do jogo.
+
+clock = pygame.time.Clock()
+fps = 60
+
+No loop principal:
+
+clock.tick(fps)
+
+Isso limita a execução do jogo a aproximadamente 60 FPS, proporcionando uma atualização mais consistente dos elementos.
+
+Sprites e Groups
+
+O projeto utiliza pygame.sprite.Sprite para representar os objetos do jogo.
+
+Foram criadas classes para:
+
+Bird — representa o personagem;
+Pipe — representa os obstáculos;
+Button — representa o botão de reinício.
+
+Os objetos Bird e Pipe também são organizados utilizando pygame.sprite.Group, facilitando o gerenciamento e a atualização dos elementos.
+
+Sistema de Colisão
+
+O Pygame também foi utilizado para verificar colisões entre o pássaro e os obstáculos:
+
+pygame.sprite.groupcollide(
+    bird_group,
+    pipe_group,
+    False,
+    False
+)
+
+Além disso, são verificadas colisões com os limites superior e inferior da tela.
+
+Geração Aleatória
+
+Os obstáculos são criados em posições diferentes utilizando a biblioteca random:
+
+pipe_height = random.randint(-100, 100)
+
+Isso faz com que cada partida possa apresentar diferentes posições para os obstáculos.
+
+Sistema de Pontuação
+
+A pontuação é incrementada quando o pássaro consegue ultrapassar um conjunto de obstáculos.
+
+A cada ponto conquistado, um efeito sonoro é reproduzido utilizando o sistema de áudio do Pygame.
+
+🔊 Sistema de Áudio
+
+O projeto utiliza arquivos de áudio para aumentar a interação durante a partida.
+
+Foram utilizados sons para:
+
+🪽 Batida de asas;
+⭐ Pontuação;
+💥 Colisão.
+
+Exemplo:
+
+wing_sound = pygame.mixer.Sound('assets/sons/wing.wav')
+point_sound = pygame.mixer.Sound('assets/sons/point.wav')
+hit_sound = pygame.mixer.Sound('assets/sons/hit.wav')
+📐 Modelagem
+
+A modelagem do projeto foi realizada utilizando o StarUML, permitindo representar a estrutura e o funcionamento do sistema antes e durante o desenvolvimento.
+
+Os diagramas utilizados no desenvolvimento estão disponíveis neste repositório.
+
+📁 Estrutura do Projeto
+FlyBird/
+│
+├── assets/
+│   ├── img/
+│   │   ├── bg.png
+│   │   ├── ground.png
+│   │   ├── bird1.png
+│   │   ├── bird2.png
+│   │   ├── bird3.png
+│   │   ├── pipe.png
+│   │   ├── restart.png
+│   │   └── message.png
+│   │
+│   └── sons/
+│       ├── point.wav
+│       ├── hit.wav
+│       └── wing.wav
+│
+├── main.py
+└── README.md
+
+A estrutura acima representa a organização utilizada no projeto. Os nomes dos arquivos podem variar conforme a versão presente no repositório.
