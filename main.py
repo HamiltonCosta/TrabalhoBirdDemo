@@ -154,7 +154,7 @@ while run:
                 score = reset_game()
 
         # Direitos autorais no menu
-        footer_text = 'Hamilton Costa Gonçalves Junior RU:4742586'
+        footer_text = 'Hamilton Costa Gonçalves Junior RU:*******'
         footer_surface = footer_font.render(footer_text, True, white)
         screen.blit(footer_surface, ((screen_width - footer_surface.get_width()) // 2, screen_height - 30))
 
@@ -227,7 +227,7 @@ while run:
             flying = True
 
     # Direitos autorais (rodapé)
-    footer_text = 'Hamilton Costa Gonçalves Junior RU:4742586'
+    footer_text = 'Hamilton Costa Gonçalves Junior RU:*******'
     footer_surface = footer_font.render(footer_text, True, white)
     screen.blit(footer_surface, ((screen_width - footer_surface.get_width()) // 2, screen_height - 30))
 
