@@ -93,7 +93,7 @@ pipe_height = random.randint(-100, 100)
 
 Isso faz com que cada partida possa apresentar diferentes posições para os obstáculos.
 
-Sistema de Pontuação
+⭐ Sistema de Pontuação
 
 A pontuação é incrementada quando o pássaro consegue ultrapassar um conjunto de obstáculos.
 
@@ -118,28 +118,22 @@ hit_sound = pygame.mixer.Sound('assets/sons/hit.wav')
 
 A modelagem do projeto foi realizada utilizando o StarUML, permitindo representar a estrutura e o funcionamento do sistema antes e durante o desenvolvimento.
 
-Os diagramas utilizados no desenvolvimento estão disponíveis neste repositório.
+🚀 Como Executar
 
-📁 Estrutura do Projeto
-FlyBird/
-│
-├── assets/
-│   ├── img/
-│   │   ├── bg.png
-│   │   ├── ground.png
-│   │   ├── bird1.png
-│   │   ├── bird2.png
-│   │   ├── bird3.png
-│   │   ├── pipe.png
-│   │   ├── restart.png
-│   │   └── message.png
-│   │
-│   └── sons/
-│       ├── point.wav
-│       ├── hit.wav
-│       └── wing.wav
-│
-├── main.py
-└── README.md
+1. Instalar o Python - https://www.jetbrains.com/pycharm/
+2. Baixar/Clonar o repositório
+3. Acessar a pasta do projeto pelo pycharm
+4. Instalar o Pygame
+5. Executar o jogo
+6. python main.py
+   
+========================================================
+📖 Objetivo Acadêmico
 
-A estrutura acima representa a organização utilizada no projeto. Os nomes dos arquivos podem variar conforme a versão presente no repositório.
+O desenvolvimento deste projeto teve como objetivo colocar em prática conhecimentos adquiridos durante a formação, principalmente relacionados à linguagem Python, utilização de bibliotecas, programação orientada a objetos, controle de versão e modelagem de software.
+
+Além da implementação do jogo, o projeto proporcionou experiência prática com ferramentas utilizadas no desenvolvimento de software, como Git, GitHub, Pygame e StarUML.
+
+👨‍💻 Autor
+
+Hamilton Costa Gonçalves Junior
